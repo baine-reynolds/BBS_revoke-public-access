@@ -7,16 +7,15 @@ pip3 install requests --user
 `
 
 ## Background
-This Tool is for bulk revoking public access from any number of project/repos. The "parse_input" method is blank, leaving it up to those who wish to use it to determine the best way to read in the data. The script expects that the data read in will result in a list, where each item is a list itself containing the project_key and repo_slug.
-
-i.e. [ [ "project_key1", "repo_slug1" ] , [ "project_key2", "repo_slug2" ] , ... ]
+This Tool is for bulk revoking public access from any number of project/repos. The "parse_input" method expects the url to each repo on a seperate line. Review the "example.in" text file for example. The URL should be the FQDN to the repo, however, you can use just the URI to the repo as the parser looks for the "projects" and "repos" section of the URI and then looks for the following path object for the respective key and slug.
 
 ## Usage
-1. Run the public-access-config.py script - `
+1. Update the "example.in" file with the URLs or URIs to each repo (on seperate lines) that you wish to revoke public access to.
+2. Run the public-access-config.py script - `
 python3 public-access-config.py
 `
-2. Enter url of Bitbucket environment, followed by any admin username and it's respective password when prompted.
-3. Review printed output for confirmation
+3. Enter url of Bitbucket environment, followed by any admin username and it's respective password when prompted.
+4. Review printed output for confirmation of changes made.
 
 ## Results
-All project "public" will be removed, and in turn, all repos that were originally public, will be set as public on an individual level. From there, *reads in list of repos to be revoked* (needs to be implemented by user), and then those repos will be marked as private.
+All projects marked as "public" will be set to private, and in turn, all repos that were originally public because of the project inheritance, will be set as public on an individual level. Once a base-line is achieved, it will read in the "example.in" file and mark those repos as private.

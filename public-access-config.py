@@ -58,7 +58,29 @@ class ServerConnections:
 
 def parse_input():
 	#Needs to read in the file with the project/repo data of what needs to be revoked. See revoke_public_access() for example
-	pass
+	#pass
+	#Example based on "example.in" input file
+	with open("example.in","r") as infile:
+		contents_list = infile.readlines()
+		parsed_list = []
+		for repo in contents_list:
+			# removes any whitespace or linebreaks
+			cleaned = repo.strip()
+			# converts https://subdomain.domain.com/projects/project-key/repos/repo-key to 
+			# ["https:","","subdomain","domain","com","projects","project-key","repos","repo-slug", ...]
+			split = cleaned.split('/') 
+			# finds "projects" and adds 1 to list position, grabbing the project key
+			project_index = split.index('projects')
+			project_key = split[project_index + 1]
+			# finds "repos" and add 1 to list position, grabbing the repo slug
+			repo_index = split.index('repos')
+			repo_slug = split[repo_index + 1]
+			parsed = [project_key, repo_slug]
+			parsed_list.append(parsed)
+	print("Parsed input list to:\n")
+	print(parsed_list)
+	print("\n\n")
+	return parsed_list
 
 def get_creds():
 	Vars.source_url = input("Enter URL of Bitbucket instance:\n")
