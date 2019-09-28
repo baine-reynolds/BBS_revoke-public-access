@@ -1,4 +1,5 @@
 __author__ = "Michael Walker"
+__email__ = "michaelchwalker@gmail.com"
 
 import requests   #Dependency  http://docs.python-requests.org/en/master/
 import getpass, json
