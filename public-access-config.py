@@ -105,7 +105,7 @@ def main():
 	for input_line in input_list:
 		if test_project(input_line, Vars) == True:  # True if public, False if private
 			switch_inherited_access_to_individual(input_line, Vars)
-		# after marking the project as public, if necessary, and setting the repos to public, mark the input as private
+		# after marking the project as private and the repos to public (if necessary), mark the inputed repos as private
 		revoke_public_access(input_line, Vars)
 
 if __name__ == "__main__":
