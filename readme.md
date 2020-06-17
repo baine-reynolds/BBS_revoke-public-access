@@ -21,7 +21,7 @@ This Tool is for bulk revoking public access from any number of project/repos. T
 (Optional)
 1. Run the tool with the "-a" or "--all" flag to revoke all public permissions across all projects and all repositories, leaving nothing public
     `
-    python3 public-access-config.py
+    python3 public-access-config.py -a
     `
 ## Results
 All projects marked as "public" will be set to private, and in turn, all repos that were originally public because of the project inheritance, will be set as public on an individual level. Once a base-line is achieved, it will read in the "example.in" file and mark those repos as private.
